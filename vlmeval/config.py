@@ -128,7 +128,7 @@ llava_series = {
     'llava_moe_e5t3': partial(LLaVA, model_path='./ckpts_it/moe_full/llava-moe-e5t3-finetune'),
     'llava_moe_e8t2': partial(LLaVA, model_path='./ckpts_it/moe/llava-moe-e8t2-finetune'),
     # phi family
-    'llava_phi_c01': partial(LLaVA, model_path='./ckpts/phi2/finetune/llava-phi-c01'),
+    'llava_phi_c01': partial(LLaVA_Phi, model_path='./ckpts/phi2/finetune/llava-phi-c01'),
     # -----------------------------------------------------------------------------------------------------------
     'llava_v1_7b': partial(LLaVA, model_path=LLAVA_V1_7B_MODEL_PTH),
     'sharegpt4v_7b': partial(LLaVA, model_path='Lin-Chen/ShareGPT4V-7B'),
@@ -307,7 +307,7 @@ supported_VLM = {
     'llava_moe_e4t2': partial(LLaVA, model_path='./ckpts_it/moe_full/llava-moe-e4t2-finetune'),
     'llava_moe_e5t3': partial(LLaVA, model_path='./ckpts_it/moe_full/llava-moe-e5t3-finetune'),
     'llava_moe_e8t2': partial(LLaVA, model_path='./ckpts_it/moe/llava-moe-e8t2-finetune'),
-    'llava_phi_c01': partial(LLaVA, model_path='./ckpts/phi2/finetune/llava-phi-c01'),
+    'llava_phi_c01': partial(LLaVA_Phi, model_path='./ckpts/phi2/finetune/llava-phi-c01'),
     
     }
 
