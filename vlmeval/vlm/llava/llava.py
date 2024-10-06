@@ -59,6 +59,15 @@ class LLaVA(BaseModel):
             exit(-1)
 
         self.model = self.model.cuda()
+
+        # additional model configuration added
+        if not hasattr(self.model, 'use_contrastive_loss'):
+            self.model.use_contrastive_loss = True
+
+        if not hasattr(self.model, 'training'):
+            self.model.training = False
+
+
         self.conv_mode = 'llava_v1'
 
         kwargs_default = dict(do_sample=False, temperature=0, max_new_tokens=512, top_p=None, num_beams=1, use_cache=True) # noqa E501
