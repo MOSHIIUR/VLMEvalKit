@@ -62,8 +62,8 @@ class LLaVA(BaseModel):
         if not hasattr(self.model.config, 'use_contrastive_loss'):
             self.model.config.use_contrastive_loss = True
 
-        if not hasattr(self.model.config, 'training'):
-            self.model.config.training = False
+        # if not hasattr(self.model.config, 'training'):
+        self.model.config.training = False
 
 
         self.conv_mode = 'llava_v1'
