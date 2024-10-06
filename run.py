@@ -233,4 +233,11 @@ def main():
 
 if __name__ == '__main__':
     load_env()
+    
+    print('*'*150)
+    
+    for key, value in os.environ.items():
+        print(f'{key}: {value}')
+    print('*'*150)
+
     main()
