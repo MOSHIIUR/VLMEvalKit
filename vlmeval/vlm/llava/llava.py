@@ -45,7 +45,7 @@ class LLaVA(BaseModel):
                 model_base=None,
                 model_name=model_name,
                 device='cpu',
-                device_map='cpu'
+                device_map='auto'
             )
         except:
             if 'ShareGPT4V' in model_path:
