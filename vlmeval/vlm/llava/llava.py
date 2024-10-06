@@ -252,18 +252,18 @@ class LLaVA_Phi(BaseModel):
         for msg in message:
             if msg['type'] == 'text':
                 content += msg['value']
-                qs = msg['value']
+                # qs = msg['value']
             else:
                 images.append(Image.open(msg['value']).convert('RGB'))
                 content += (DEFAULT_IMAGE_TOKEN + '\n')
-                qs = DEFAULT_IMAGE_TOKEN + '\n' + qs
+                # qs = DEFAULT_IMAGE_TOKEN + '\n'
 
         print('*'*100)
         print(message)
         print('-'*100)
         print(content)
-        print('-'*100)
-        print(qs)
+        # print('-'*100)
+        # print(qs)
         print('*'*100)
         
         conv = copy.deepcopy(self.conv_templates[self.conv_template])
