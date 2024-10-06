@@ -183,10 +183,14 @@ class LLaVA_Phi(BaseModel):
     INSTALL_REQ = False
     INTERLEAVE = True
 
+
     def __init__(self, model_path='liuhaotian/llava_v1.5_7b', **kwargs):
         try:
             from llava.model.builder import load_pretrained_model
             from llava.mm_utils import get_model_name_from_path
+            from llava.conversation import conv_templates
+            from llava.mm_utils import get_model_name_from_path
+
         except:
             warnings.warn('Please install llava before using LLaVA')
             sys.exit(-1)
@@ -200,7 +204,7 @@ class LLaVA_Phi(BaseModel):
             model_name = get_model_name_from_path(model_path)
 
         try:
-            self.tokenizer, self.model, self.processor, self.context_len = load_pretrained_model(
+            self.tokenizer, self.model, self.image_processor, self.context_len = load_pretrained_model(
                 model_path=model_path,
                 model_base=None,
                 model_name=model_name,
@@ -216,124 +220,55 @@ class LLaVA_Phi(BaseModel):
                 warnings.warn('Unknown error when loading LLaVA model.')
             exit(-1)
 
-        self.model = self.model.cuda()
-
         # additional model configuration added
         if not hasattr(self.model.config, 'use_contrastive_loss'):
             self.model.config.use_contrastive_loss = True
 
         # if not hasattr(self.model.config, 'training'):
         self.model.config.training = False
+            
+
+        self.model = self.model.cuda()
+
+        if 'phi' in model_path.lower():
+            conv_mode = 'phi'
+            
+        self.conv_template = conv_mode
+        self.conv_templates = conv_templates
 
         kwargs_default = dict(do_sample=False, temperature=0, max_new_tokens=512, top_p=None, num_beams=1, use_cache=True)
         kwargs_default.update(kwargs)
         self.kwargs = kwargs_default
         warnings.warn(f'Following kwargs received: {self.kwargs}, will use as generation config. ')
         
-
-    def apply_prompt_template(self, prompt):
-        model_path = self.model_path.lower()
-        if 'phi' in model_path:
-            template = (
-                'A chat between a curious human and an artificial intelligence assistant. '
-                "The assistant gives helpful, detailed, and polite answers to the human's questions. "
-                'USER: PLACEHOLDER ASSISTANT:'
-            )
-        else:
-            raise NotImplementedError(f'Prompt template for {model_path} not implemented.')
-
-        prompt = template.replace('PLACEHOLDER', f'<image>\n{prompt}')
-        return prompt
-
-    def output_process(self, answer):
-
-        print('-'*100)
-        print(answer)
-        print('-'*100)
-        print('*'*100)
-
-        if '<s>' in answer:
-            answer = answer.replace('<s>', '').strip()
-        if '[/INST]' in answer:
-            answer = answer.split('[/INST]')[1].strip()
-        elif 'ASSISTANT:' in answer:
-            answer = answer.split('ASSISTANT:')[1].strip()
-        elif 'assistant\n' in answer:
-            answer = answer.split('assistant\n')[1].strip()            
-        elif '<|endoftext|>\n\n' in answer:
-            answer = answer.split('<|endoftext|>\n\n')[2].strip()
-
-        if '</s>' in answer:
-            answer = answer.split('</s>')[0].strip()
-        elif '<|im_end|>' in answer:
-            answer = answer.split('<|im_end|>')[0].strip()
-        elif '<|eot_id|>' in answer:
-            answer = answer.split('<|eot_id|>')[0].strip()
-        elif '<|endoftext|>' in answer:
-            answer = answer.split('<|endoftext|>')[0].strip()
-        
-        print(answer)
-        print('-'*100)
-        print('*'*100)
-        
-        return answer
-
-    def use_custom_prompt(self, dataset):
-        assert dataset is not None
-        if DATASET_TYPE(dataset) == 'MCQ':
-            return True
-        return False
-
-    def build_prompt(self, line, dataset=None):
-        assert self.use_custom_prompt(dataset)
-        assert dataset is None or isinstance(dataset, str)
-        tgt_path = self.dump_image(line, dataset)
-
-        question = line['question']
-        hint = line['hint'] if ('hint' in line and not pd.isna(line['hint'])) else None
-        if hint is not None:
-            question = hint + '\n' + question
-
-        options = {
-            cand: line[cand]
-            for cand in string.ascii_uppercase
-            if cand in line and not pd.isna(line[cand])
-        }
-        for key, item in options.items():
-            question += f'\n{key}. {item}'
-        prompt = question
-
-        if len(options):
-            prompt += (
-                '\n请直接回答选项字母。' if cn_string(prompt) else
-                "\nAnswer with the option's letter from the given choices directly."
-            )
-        else:
-            prompt += '\n请直接回答问题。' if cn_string(prompt) else '\nAnswer the question directly.'
-        message = [dict(type='image', value=s) for s in tgt_path]
-        message.append(dict(type='text', value=prompt))
-        return message
-
     def generate_inner(self, message, dataset=None):
-        content, images = [], []
+        from llava.mm_utils import process_images, tokenizer_image_token
+        from llava.constants import IMAGE_TOKEN_INDEX, DEFAULT_IMAGE_TOKEN
+        content, images = '', []
         for msg in message:
             if msg['type'] == 'text':
-                content.append({'type': msg['type'], 'text': msg['value']})
+                content += msg['value']
             else:
-                content.append({'type': 'image'})
                 images.append(Image.open(msg['value']).convert('RGB'))
-        conversation = [
-            {
-                'role': 'user',
-                'content': content,
-            }
-        ]
-        prompt = self.processor.apply_chat_template(conversation, add_generation_prompt=True)
-        inputs = self.processor(prompt, images, return_tensors='pt').to('cuda', torch.float16)
-        output = self.model.generate(**inputs, **self.kwargs)
-        answer = self.processor.decode(output[0], skip_special_token=True)
-        answer = self.output_process(answer)
-        return answer
+                content += (DEFAULT_IMAGE_TOKEN + '\n')
+        
+        conv = copy.deepcopy(self.conv_templates[self.conv_template])
+        conv.append_message(conv.roles[0], content)
+        conv.append_message(conv.roles[1], None)
+        prompt_question = conv.get_prompt()
+
+        args = abstractproperty()
+        args.image_aspect_ratio = 'pad'
+        image_tensor = process_images(images, self.image_processor, args).to('cuda', dtype=torch.float16)
+        input_ids = tokenizer_image_token(prompt_question, self.tokenizer, IMAGE_TOKEN_INDEX, return_tensors='pt').unsqueeze(0).cuda()
+
+        with torch.inference_mode():
+            output_ids = self.model.generate(
+                input_ids, images=image_tensor, **self.kwargs)
+
+        output = self.tokenizer.batch_decode(output_ids, skip_special_tokens=True)[0].strip()
+        return output
+
 
 class LLaVA_Next(BaseModel):
 
@@ -504,6 +439,7 @@ class LLaVA_Next2(BaseModel):
             conv_mode = 'llava_llama_3'
         elif 'qwen' in model_path.lower():
             conv_mode = 'qwen_1_5'
+
         self.conv_template = conv_mode
         self.conv_templates = conv_templates
         self.tokenizer = tokenizer
