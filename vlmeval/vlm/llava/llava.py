@@ -134,6 +134,10 @@ class LLaVA(BaseModel):
             prompt += ' ' if utter['role'] == 'user' else self.stop_str
         assert message[-1]['role'] == 'user', message
         prompt += 'ASSISTANT: '
+        
+        print('*'*100)
+        print(prompt)
+        print('-'*100)
 
         images = [Image.open(s).convert('RGB') for s in images]
         args = abstractproperty()
@@ -244,13 +248,23 @@ class LLaVA_Phi(BaseModel):
     def generate_inner(self, message, dataset=None):
         from llava.mm_utils import process_images, tokenizer_image_token
         from llava.constants import IMAGE_TOKEN_INDEX, DEFAULT_IMAGE_TOKEN
-        content, images = '', []
+        content, images, qs = '', [], None
         for msg in message:
             if msg['type'] == 'text':
                 content += msg['value']
+                qs = msg['value']
             else:
                 images.append(Image.open(msg['value']).convert('RGB'))
                 content += (DEFAULT_IMAGE_TOKEN + '\n')
+                qs = DEFAULT_IMAGE_TOKEN + '\n' + qs
+
+        print('*'*100)
+        print(message)
+        print('-'*100)
+        print(content)
+        print('-'*100)
+        print(qs)
+        print('*'*100)
         
         conv = copy.deepcopy(self.conv_templates[self.conv_template])
         conv.append_message(conv.roles[0], content)
