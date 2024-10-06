@@ -278,7 +278,7 @@ class LLaVA_Phi(BaseModel):
 
         with torch.inference_mode():
             output_ids = self.model.generate(
-                input_ids, images=image_tensor, **self.kwargs)
+                input_ids, images=image_tensor, pad_token_id=self.model.config.eos_token_id, **self.kwargs)
 
         output = self.tokenizer.batch_decode(output_ids, skip_special_tokens=True)[0].strip()
         return output
