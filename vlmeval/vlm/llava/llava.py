@@ -200,7 +200,7 @@ class LLaVA_Phi(BaseModel):
             model_name = get_model_name_from_path(model_path)
 
         try:
-            self.tokenizer, self.model, self.image_processor, self.context_len = load_pretrained_model(
+            self.tokenizer, self.model, self.processor, self.context_len = load_pretrained_model(
                 model_path=model_path,
                 model_base=None,
                 model_name=model_name,
