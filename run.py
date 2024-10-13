@@ -58,6 +58,7 @@ def main():
                 supported_VLM[k] = v
 
     rank, world_size = get_rank_and_world_size()
+    
     if world_size > 1:
         local_rank = os.environ.get('LOCAL_RANK', 0)
         torch.cuda.set_device(int(local_rank))
@@ -88,6 +89,7 @@ def main():
                     dataset = dataset_list[0]
                 else:
                     dataset = build_dataset(dataset_name, **dataset_kwargs)
+                
                 if dataset is None:
                     logger.error(f'Dataset {dataset_name} is not valid, will be skipped. ')
                     continue
@@ -232,12 +234,6 @@ def main():
 
 
 if __name__ == '__main__':
+    
     load_env()
-    
-    # print('*'*150)
-    
-    # for key, value in os.environ.items():
-    #     print(f'{key}: {value}')
-    # print('*'*150)
-
     main()
