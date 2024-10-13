@@ -140,6 +140,7 @@ llava_series = {
     'llava_v1.5_7b_E1': partial(LLaVA, model_path='./ckpts/llava-v1.5-7b-E1'),
     'llava_v1.5_7b_E12': partial(LLaVA, model_path='./ckpts/llava-v1.5-7b-aokvqa'),
     'llava_v1.5_7b_E3': partial(LLaVA, model_path='./ckpts/llava-v1.5-7b-E3'),
+    'llava_v1.5_7b_v3_E3': partial(LLaVA, model_path='./ckpts/llava-v1.5-7b-v3-E3'),
     
     
     
@@ -335,6 +336,7 @@ supported_VLM = {
     'llava_v1.5_7b_E1': partial(LLaVA, model_path='./ckpts/llava-v1.5-7b-E1'),
     'llava_v1.5_7b_E12': partial(LLaVA, model_path='./ckpts/llava-v1.5-7b-aokvqa'),
     'llava_v1.5_7b_E3': partial(LLaVA, model_path='./ckpts/llava-v1.5-7b-E3'),
+    'llava_v1.5_7b_v3_E3': partial(LLaVA, model_path='./ckpts/llava-v1.5-7b-v3-E3'),
     }
 
 model_groups = [
