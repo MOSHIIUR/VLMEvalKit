@@ -144,7 +144,7 @@ llava_series = {
     'llava_v1.5_7b_v1_E3': partial(LLaVA, model_path='./ckpts/llava-v1.5-7b-v1-E3'),
     'llava_v1.5_7b_vicuna_v1_E1': partial(LLaVA, model_path='./ckpts/llava-v1.5-7b-vicuna-v1-E1'),
     'llava_v1.5_7b_vicuna_v1_E3': partial(LLaVA, model_path='./ckpts/llava-v1.5-7b-vicuna-v1-E3'),
-    
+    'llava_v1.5_7b_v1_E1': partial(LLaVA, model_path='./ckpts/llava-v1.5-7b-v1-E1'),
     
     'llava_v1_7b': partial(LLaVA, model_path=LLAVA_V1_7B_MODEL_PTH),
     'sharegpt4v_7b': partial(LLaVA, model_path='Lin-Chen/ShareGPT4V-7B'),
@@ -333,7 +333,7 @@ supported_VLM = {
     'llava_phi_c09': partial(LLaVA_Phi, model_path='./ckpts/phi2/finetune/llava-phi-c09'),
     'llava_phi_c10': partial(LLaVA_Phi, model_path='./ckpts/phi2/finetune/llava-phi-c10'),
 
-    
+
     # synthetic data
     'llava_v1.5_7b': partial(LLaVA, model_path='liuhaotian/llava-v1.5-7b'),
     'llava_v1.5_7b_E1': partial(LLaVA, model_path='./ckpts/llava-v1.5-7b-E1'),
@@ -343,6 +343,7 @@ supported_VLM = {
     'llava_v1.5_7b_v1_E3': partial(LLaVA, model_path='./ckpts/llava-v1.5-7b-v1-E3'),
     'llava_v1.5_7b_vicuna_v1_E1': partial(LLaVA, model_path='./ckpts/llava-v1.5-7b-vicuna-v1-E1'),
     'llava_v1.5_7b_vicuna_v1_E3': partial(LLaVA, model_path='./ckpts/llava-v1.5-7b-vicuna-v1-E3'),
+    'llava_v1.5_7b_v1_E1': partial(LLaVA, model_path='./ckpts/llava-v1.5-7b-v1-E1'),
     }
 
 model_groups = [
