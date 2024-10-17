@@ -149,6 +149,8 @@ llava_series = {
     'llava_v1.5_7b_vicuna_v2_E6': partial(LLaVA, model_path='./ckpts/llava-v1.5-7b-vicuna-v2-E6'),
     'llava_v1.5_7b_v1_E1_v2': partial(LLaVA, model_path='./ckpts/llava-v1.5-7b-v1-E1-v2'),
     'llava_v1.5_7b_main_E3_vicuna': partial(LLaVA, model_path='./ckpts/llava-v1.5-7b-main-E3-vicuna'),
+    'llava_v1.5_7b_main_E9': partial(LLaVA, model_path='./ckpts/llava-v1.5-7b-main-E6'),
+    'llava_v1.5_7b_main_E6': partial(LLaVA, model_path='./ckpts/llava-v1.5-7b-main-E9'),
     'llava_v1.5_7b_v1_v2_E1_vicuna': partial(LLaVA, model_path='./ckpts/llava-v1.5-7b-v1_v2-E1-vicuna'),
     
     
@@ -355,6 +357,8 @@ supported_VLM = {
     'llava_v1.5_7b_v1_E1_v2': partial(LLaVA, model_path='./ckpts/llava-v1.5-7b-v1-E1-v2'),
     'llava_v1.5_7b_main_E3_vicuna': partial(LLaVA, model_path='./ckpts/llava-v1.5-7b-main-E3-vicuna'),
     'llava_v1.5_7b_v1_v2_E1_vicuna': partial(LLaVA, model_path='./ckpts/llava-v1.5-7b-v1_v2-E1-vicuna'),
+    'llava_v1.5_7b_main_E9': partial(LLaVA, model_path='./ckpts/llava-v1.5-7b-main-E6'),
+    'llava_v1.5_7b_main_E6': partial(LLaVA, model_path='./ckpts/llava-v1.5-7b-main-E9'),
     
     }
 
