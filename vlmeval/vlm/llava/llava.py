@@ -213,6 +213,7 @@ class LLaVA_Phi(BaseModel):
                 model_base=None,
                 model_name=model_name,
             )
+            
         except:
             if 'ShareGPT4V' in model_path:
                 import llava
@@ -257,14 +258,6 @@ class LLaVA_Phi(BaseModel):
                 images.append(Image.open(msg['value']).convert('RGB'))
                 content += (DEFAULT_IMAGE_TOKEN + '\n')
                 # qs = DEFAULT_IMAGE_TOKEN + '\n'
-
-        # print('*'*100)
-        # print(message)
-        # print('-'*100)
-        # print(content)
-        # # print('-'*100)
-        # # print(qs)
-        # print('*'*100)
         
         conv = copy.deepcopy(self.conv_templates[self.conv_template])
         conv.append_message(conv.roles[0], content)
