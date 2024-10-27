@@ -196,7 +196,6 @@ class LLaVA_custom(BaseModel):
             print('inside try-catch')
             from llava.model.builder import load_pretrained_model
             from llava.mm_utils import get_model_name_from_path
-            from llava.conversation import conv_templates
 
         except:
             warnings.warn('Please install llava before using LLaVA')
@@ -247,7 +246,7 @@ class LLaVA_custom(BaseModel):
             conv_mode = 'llama_3_1'
             
         self.conv_template = conv_mode
-        self.conv_templates = conv_templates
+        self.conv_templates = 'llama_3_1'
 
         kwargs_default = dict(do_sample=False, temperature=0, max_new_tokens=512, top_p=None, num_beams=1, use_cache=True)
         kwargs_default.update(kwargs)
