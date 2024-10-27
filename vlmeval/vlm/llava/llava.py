@@ -194,7 +194,6 @@ class LLaVA_custom(BaseModel):
             from llava.model.builder import load_pretrained_model
             from llava.mm_utils import get_model_name_from_path
             from llava.conversation import conv_templates
-            from llava.mm_utils import get_model_name_from_path
 
         except:
             warnings.warn('Please install llava before using LLaVA')
