@@ -201,20 +201,18 @@ class LLaVA_custom(BaseModel):
 
         try:
             from llava.mm_utils import get_model_name_from_path
+
         except:
             warnings.warn('Please install get_model_name_from_path')
             sys.exit(-1)
         
         try:
             from llava.conversation import conv_templates
+
         except:
             warnings.warn('Please install conv_templates')
             sys.exit(-1)
             
-
-        except:
-            warnings.warn('Please install llava before using LLaVA')
-            sys.exit(-1)
 
         warnings.warn('Please install the latest version of llava from github before you evaluate the LLaVA model. ')
         
