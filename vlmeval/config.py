@@ -127,6 +127,10 @@ llava_series = {
     'llava_moe_e4t2': partial(LLaVA, model_path='./ckpts_it/moe_full/llava-moe-e4t2-finetune'),
     'llava_moe_e5t3': partial(LLaVA, model_path='./ckpts_it/moe_full/llava-moe-e5t3-finetune'),
     'llava_moe_e8t2': partial(LLaVA, model_path='./ckpts_it/moe/llava-moe-e8t2-finetune'),
+
+    # moe
+    'vicuna7b_moe_llava': partial(LLaVA, model_path='./ckpts/finetune-vicuna7b-moe-llava'),
+    
     # phi family
     'llava_phi_c01': partial(LLaVA_Phi, model_path='./ckpts/phi2/finetune/llava-phi-c01'),
     'llava_phi_c02': partial(LLaVA_Phi, model_path='./ckpts/phi2/finetune/llava-phi-c02'),
@@ -344,7 +348,9 @@ supported_VLM = {
     'llava_phi_c06': partial(LLaVA_Phi, model_path='./ckpts/phi2/finetune/llava-phi-c06'),
     'llava_phi_c09': partial(LLaVA_Phi, model_path='./ckpts/phi2/finetune/llava-phi-c09'),
     'llava_phi_c10': partial(LLaVA_Phi, model_path='./ckpts/phi2/finetune/llava-phi-c10'),
-
+    
+    # moe
+    'vicuna7b_moe_llava': partial(LLaVA, model_path='./ckpts/finetune-vicuna7b-moe-llava'),
 
     # synthetic data
     'llava_v1.5_7b': partial(LLaVA, model_path='liuhaotian/llava-v1.5-7b'),
