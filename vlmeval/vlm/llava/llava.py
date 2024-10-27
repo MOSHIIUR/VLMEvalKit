@@ -182,7 +182,7 @@ class LLaVA(BaseModel):
         output = self.tokenizer.batch_decode(output_ids, skip_special_tokens=True)[0].strip()
         return output
     
-class LLaVA_Phi(BaseModel):
+class LLaVA_custom(BaseModel):
 
     INSTALL_REQ = False
     INTERLEAVE = True
@@ -225,18 +225,21 @@ class LLaVA_Phi(BaseModel):
                 warnings.warn('Unknown error when loading LLaVA model.')
             exit(-1)
 
-        # additional model configuration added
-        if not hasattr(self.model.config, 'use_contrastive_loss'):
-            self.model.config.use_contrastive_loss = True
+        # # additional model configuration added
+        # if not hasattr(self.model.config, 'use_contrastive_loss'):
+        #     self.model.config.use_contrastive_loss = True
 
-        # if not hasattr(self.model.config, 'training'):
-        self.model.config.training = False
+        # # if not hasattr(self.model.config, 'training'):
+        # self.model.config.training = False
             
 
         self.model = self.model.cuda()
 
         if 'phi' in model_path.lower():
             conv_mode = 'phi'
+
+        elif 'llama' in model_path.lower():
+            conv_mode = 'llama_3_1'
             
         self.conv_template = conv_mode
         self.conv_templates = conv_templates
@@ -275,6 +278,8 @@ class LLaVA_Phi(BaseModel):
 
         output = self.tokenizer.batch_decode(output_ids, skip_special_tokens=True)[0].strip()
         return output
+
+
 
 
 class LLaVA_Next(BaseModel):
