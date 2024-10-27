@@ -189,6 +189,7 @@ class LLaVA_custom(BaseModel):
 
 
     def __init__(self, model_path='liuhaotian/llava_v1.5_7b', **kwargs):
+        
         try:
             from llava.model.builder import load_pretrained_model
             from llava.mm_utils import get_model_name_from_path
@@ -200,6 +201,7 @@ class LLaVA_custom(BaseModel):
             sys.exit(-1)
 
         warnings.warn('Please install the latest version of llava from github before you evaluate the LLaVA model. ')
+        
         if model_path == 'Lin-Chen/ShareGPT4V-7B':
             model_name = 'llava-v1.5-7b'
         elif model_path == 'Lin-Chen/ShareGPT4V-13B':
