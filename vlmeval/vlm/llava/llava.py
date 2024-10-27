@@ -207,13 +207,13 @@ class LLaVA_custom(BaseModel):
             sys.exit(-1)
         
         try:
-            import llava.conversation
-            print(getattr(llava.conversation, 'conv_templates', None)) 
+            from llava.conversation import conv_templates
 
         except:
             warnings.warn('Please install conv_templates')
             sys.exit(-1)
             
+
 
         warnings.warn('Please install the latest version of llava from github before you evaluate the LLaVA model. ')
         
