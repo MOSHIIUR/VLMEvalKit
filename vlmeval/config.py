@@ -141,6 +141,7 @@ llava_series = {
     'llava_phi_c06': partial(LLaVA_custom, model_path='./ckpts/phi2/finetune/llava-phi-c06'),
     'llava_phi_c09': partial(LLaVA_custom, model_path='./ckpts/phi2/finetune/llava-phi-c09'),
     'llava_phi_c10': partial(LLaVA_custom, model_path='./ckpts/phi2/finetune/llava-phi-c10'),
+    
     # synthetic_data
     'llava_v1.5_7b_E1': partial(LLaVA, model_path='./ckpts/llava-v1.5-7b-E1'),
     'llava_v1.5_7b_E12': partial(LLaVA, model_path='./ckpts/llava-v1.5-7b-aokvqa'),
