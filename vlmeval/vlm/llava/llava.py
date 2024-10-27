@@ -190,6 +190,8 @@ class LLaVA_custom(BaseModel):
 
     def __init__(self, model_path='liuhaotian/llava_v1.5_7b', **kwargs):
         
+        print(f"Loading model from: {model_path}")
+        
         try:
             from llava.model.builder import load_pretrained_model
             from llava.mm_utils import get_model_name_from_path
