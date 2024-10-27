@@ -193,6 +193,7 @@ class LLaVA_custom(BaseModel):
         print(f"Loading model from: {model_path}")
         
         try:
+            print('inside try-catch')
             from .llava.model.builder import load_pretrained_model
             from .llava.mm_utils import get_model_name_from_path
             from .llava.conversation import conv_templates
@@ -211,6 +212,7 @@ class LLaVA_custom(BaseModel):
             model_name = get_model_name_from_path(model_path)
 
         try:
+            print('inside another try catch')
             self.tokenizer, self.model, self.image_processor, self.context_len = load_pretrained_model(
                 model_path=model_path,
                 model_base=None,
