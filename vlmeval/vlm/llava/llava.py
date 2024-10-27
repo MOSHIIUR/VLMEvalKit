@@ -193,9 +193,9 @@ class LLaVA_custom(BaseModel):
         print(f"Loading model from: {model_path}")
         
         try:
-            from llava.model.builder import load_pretrained_model
-            from llava.mm_utils import get_model_name_from_path
-            from llava.conversation import conv_templates
+            from .llava.model.builder import load_pretrained_model
+            from .llava.mm_utils import get_model_name_from_path
+            from .llava.conversation import conv_templates
 
         except:
             warnings.warn('Please install llava before using LLaVA')
@@ -253,8 +253,8 @@ class LLaVA_custom(BaseModel):
         warnings.warn(f'Following kwargs received: {self.kwargs}, will use as generation config. ')
         
     def generate_inner(self, message, dataset=None):
-        from llava.mm_utils import process_images, tokenizer_image_token
-        from llava.constants import IMAGE_TOKEN_INDEX, DEFAULT_IMAGE_TOKEN
+        from .llava.mm_utils import process_images, tokenizer_image_token
+        from .llava.constants import IMAGE_TOKEN_INDEX, DEFAULT_IMAGE_TOKEN
         content, images, qs = '', [], None
         for msg in message:
             if msg['type'] == 'text':
