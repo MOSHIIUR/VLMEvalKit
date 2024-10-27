@@ -217,6 +217,9 @@ class LLaVA_custom(BaseModel):
                 model_name=model_name,
             )
 
+            print(f'Model pad_token_id after assignment: {self.tokenizer.pad_token_id}')
+
+
         # try:
             
             
