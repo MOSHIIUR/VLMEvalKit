@@ -193,20 +193,8 @@ class LLaVA_custom(BaseModel):
         print(f"Loading model from: {model_path}")
         
         try:
-            print('inside try-catch')
             from llava.model.builder import load_pretrained_model
-        except:
-            warnings.warn('Please install load_pretrained_model')
-            sys.exit(-1)
-
-        try:
             from llava.mm_utils import get_model_name_from_path
-
-        except:
-            warnings.warn('Please install get_model_name_from_path')
-            sys.exit(-1)
-        
-        try:
             from llava.conversation import conv_templates
 
         except:
@@ -223,25 +211,25 @@ class LLaVA_custom(BaseModel):
             model_name = 'llava-v1.5-13b'
         else:
             model_name = get_model_name_from_path(model_path)
-
-        try:
-            print('inside another try catch')
             self.tokenizer, self.model, self.image_processor, self.context_len = load_pretrained_model(
                 model_path=model_path,
                 model_base=None,
                 model_name=model_name,
             )
+
+        # try:
             
-        except:
-            if 'ShareGPT4V' in model_path:
-                import llava
-                warnings.warn(
-                    'Please manually remove the encoder type check in '
-                    f'{llava.__path__[0]}/model/multimodal_encoder/builder.py '
-                    'Line 8 to use the ShareGPT4V model. ')
-            else:
-                warnings.warn('Unknown error when loading LLaVA model.')
-            exit(-1)
+            
+        # except:
+        #     if 'ShareGPT4V' in model_path:
+        #         import llava
+        #         warnings.warn(
+        #             'Please manually remove the encoder type check in '
+        #             f'{llava.__path__[0]}/model/multimodal_encoder/builder.py '
+        #             'Line 8 to use the ShareGPT4V model. ')
+        #     else:
+        #         warnings.warn('Unknown error when loading LLaVA model.')
+        #     exit(-1)
 
         # # additional model configuration added
         # if not hasattr(self.model.config, 'use_contrastive_loss'):
