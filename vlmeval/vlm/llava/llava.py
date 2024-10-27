@@ -195,8 +195,22 @@ class LLaVA_custom(BaseModel):
         try:
             print('inside try-catch')
             from llava.model.builder import load_pretrained_model
-            from llava.conversation import conv_templates
+        except:
+            warnings.warn('Please install load_pretrained_model')
+            sys.exit(-1)
+
+        try:
             from llava.mm_utils import get_model_name_from_path
+        except:
+            warnings.warn('Please install get_model_name_from_path')
+            sys.exit(-1)
+        
+        try:
+            from llava.conversation import conv_templates
+        except:
+            warnings.warn('Please install conv_templates')
+            sys.exit(-1)
+            
 
         except:
             warnings.warn('Please install llava before using LLaVA')
