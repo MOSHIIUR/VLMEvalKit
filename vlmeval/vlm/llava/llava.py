@@ -184,7 +184,7 @@ class LLaVA(BaseModel):
     
 class LLaVA_custom(BaseModel):
 
-    INSTALL_REQ = False
+    INSTALL_REQ = True
     INTERLEAVE = True
 
 
