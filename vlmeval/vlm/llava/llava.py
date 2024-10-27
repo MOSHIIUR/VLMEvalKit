@@ -207,7 +207,7 @@ class LLaVA_custom(BaseModel):
             sys.exit(-1)
         
         try:
-            from llava.conversation import conv_templates as conv_templates
+            from llava.conversation import *
 
         except:
             warnings.warn('Please install conv_templates')
