@@ -7,6 +7,7 @@ from ..base import BaseModel
 from ...smp import *
 from ...dataset import DATASET_TYPE
 import copy
+import pprint
 
 
 class LLaVA(BaseModel):
@@ -171,7 +172,7 @@ class LLaVA(BaseModel):
 
         prompt = self.system_prompt + 'USER: ' + content + ' ASSISTANT: '
 
-        print(prompt)
+        pprint.pprint(prompt)
         print('*'*100)
 
 
@@ -278,7 +279,7 @@ class LLaVA_custom(BaseModel):
         conv.append_message(conv.roles[1], None)
         prompt_question = conv.get_prompt()
 
-        print(prompt_question)
+        pprint.pprint(prompt_question)
         print('*'*100)
 
         args = abstractproperty()
