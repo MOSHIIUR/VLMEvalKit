@@ -220,7 +220,7 @@ class LLaVA_custom(BaseModel):
 
         # additional model configuration added
         if not hasattr(self.model.config, 'moe_enable'):
-            self.model.config.use_contrastive_loss = False
+            self.model.config.moe_enable = False
 
 
         # try:
