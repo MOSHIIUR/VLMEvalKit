@@ -276,7 +276,7 @@ class LLaVA_custom(BaseModel):
         prompt_question = conv.get_prompt()
 
         # add assistant
-        assistant = '<|start_header_id|>' + conv.roles[1] + '<|end_header_id|>' + '\n\n'
+        assistant = '<|start_header_id|>' + conv.roles[1] + '<|end_header_id|>' + ':'
         # assistant = '<|start_header_id|>' + conv.roles[1] + '<|end_header_id|>' + ':'
 
         prompt_question += assistant
