@@ -280,8 +280,8 @@ class LLaVA_custom(BaseModel):
 
         prompt_question += assistant
 
-        pprint.pprint(prompt_question)
-        print('*'*100)
+        # pprint.pprint(prompt_question)
+        # print('*'*100)
 
 
         args = abstractproperty()
