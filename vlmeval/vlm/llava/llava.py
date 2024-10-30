@@ -172,10 +172,6 @@ class LLaVA(BaseModel):
 
         prompt = self.system_prompt + 'USER: ' + content + ' ASSISTANT: '
 
-        pprint.pprint(prompt)
-        print('*'*100)
-
-
         input_ids = tokenizer_image_token(
             prompt, self.tokenizer, IMAGE_TOKEN_INDEX, return_tensors='pt').unsqueeze(0).cuda()
         keywords = [self.stop_str]
@@ -279,8 +275,11 @@ class LLaVA_custom(BaseModel):
         conv.append_message(conv.roles[1], None)
         prompt_question = conv.get_prompt()
 
-        pprint.pprint(prompt_question)
-        print('*'*100)
+        # add assistant
+        assistant = '<|start_header_id|>' + conv.roles[1] + '<|end_header_id|>' + '\n\n'
+
+        prompt_question += assistant
+
 
         args = abstractproperty()
         args.image_aspect_ratio = 'pad'
