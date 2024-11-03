@@ -157,7 +157,7 @@ llava_series = {
     'llava-v2_97k-E3': partial(LLaVA, model_path='./ckpts/llava-v2_97k-E3'),
     'llava-v3_97k-E3': partial(LLaVA, model_path='./ckpts/llava-v3_97k-E3'),
     'llava-evolve_17k-E3': partial(LLaVA, model_path='./ckpts/llava-evolve_17k-E3'),
-
+    'llava-evolve_17k-task-E3': partial(LLaVA, model_path='./ckpts/llava-evolve_17k-task-E3'),
     # ================================================================================================
     'llava_v1_7b': partial(LLaVA, model_path=LLAVA_V1_7B_MODEL_PTH),
     'sharegpt4v_7b': partial(LLaVA, model_path='Lin-Chen/ShareGPT4V-7B'),
@@ -365,6 +365,7 @@ supported_VLM = {
     'llava-v2_97k-E3': partial(LLaVA, model_path='./ckpts/llava-v2_97k-E3'),
     'llava-v3_97k-E3': partial(LLaVA, model_path='./ckpts/llava-v3_97k-E3'),
     'llava-evolve_17k-E3': partial(LLaVA, model_path='./ckpts/llava-evolve_17k-E3'),
+    'llava-evolve_17k-task-E3': partial(LLaVA, model_path='./ckpts/llava-evolve_17k-task-E3'),
     
     }
 
