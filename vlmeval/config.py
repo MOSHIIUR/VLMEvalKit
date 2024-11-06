@@ -147,7 +147,7 @@ llava_series = {
     # synthetic_data
     'llava-v1_50k-task-E3': partial(LLaVA, model_path='./ckpts/llava-v1_50k-task-E3'),
     'llava-v1_50k-task-E3': partial(LLaVA, model_path='./ckpts/llava-v2_50k-task-E3'),
-    'llava-v1_50k-task-E3': partial(LLaVA, model_path='./ckpts/llava-v3_50k-task-E3'),
+    'llava-mix_evolved-E3': partial(LLaVA, model_path='./ckpts/llava-mix_evolved-E3'),
 
     'llava-main_4x-E1': partial(LLaVA, model_path='./ckpts/llava-main_4x-E6/checkpoint-640'),
     'llava-main_4x-E2': partial(LLaVA, model_path='./ckpts/llava-main_4x-E6/checkpoint-1280'),
@@ -360,6 +360,7 @@ supported_VLM = {
     'llava-main_4x-E3': partial(LLaVA, model_path='./ckpts/llava-main_4x-E3'),
     'llava-main_4x_v2-E3': partial(LLaVA, model_path='./ckpts/llava-main_4x_v2-E3'),
     'llava-evolved_50k-E3': partial(LLaVA, model_path='./ckpts/llava-evolved_50k-E3'),
+    'llava-mix_evolved-E3': partial(LLaVA, model_path='./ckpts/llava-mix_evolved-E3'),
 
     'llava-main_4x-E1': partial(LLaVA, model_path='./ckpts/llava-main_4x-E6/checkpoint-640'),
     'llava-main_4x-E2': partial(LLaVA, model_path='./ckpts/llava-main_4x-E6/checkpoint-1280'),
