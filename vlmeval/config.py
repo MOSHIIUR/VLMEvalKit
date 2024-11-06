@@ -161,6 +161,7 @@ llava_series = {
     'llava-v3_97k-E3': partial(LLaVA, model_path='./ckpts/llava-v3_97k-E3'),
     'llava-evolve_17k-E3': partial(LLaVA, model_path='./ckpts/llava-evolve_17k-E3'),
     'llava-evolve_17k-task-E3': partial(LLaVA, model_path='./ckpts/llava-evolve_17k-task-E3'),
+    'llava-evolved_50k-E3': partial(LLaVA, model_path='./ckpts/llava-evolved_50k-E3'),
     # ================================================================================================
     'llava_v1_7b': partial(LLaVA, model_path=LLAVA_V1_7B_MODEL_PTH),
     'sharegpt4v_7b': partial(LLaVA, model_path='Lin-Chen/ShareGPT4V-7B'),
@@ -358,7 +359,7 @@ supported_VLM = {
     # synthetic data
     'llava-main_4x-E3': partial(LLaVA, model_path='./ckpts/llava-main_4x-E3'),
     'llava-main_4x_v2-E3': partial(LLaVA, model_path='./ckpts/llava-main_4x_v2-E3'),
-
+    'llava-evolved_50k-E3': partial(LLaVA, model_path='./ckpts/llava-evolved_50k-E3'),
 
     'llava-main_4x-E1': partial(LLaVA, model_path='./ckpts/llava-main_4x-E6/checkpoint-640'),
     'llava-main_4x-E2': partial(LLaVA, model_path='./ckpts/llava-main_4x-E6/checkpoint-1280'),
