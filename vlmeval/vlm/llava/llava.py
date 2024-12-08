@@ -136,9 +136,9 @@ class LLaVA(BaseModel):
         assert message[-1]['role'] == 'user', message
         prompt += 'ASSISTANT: '
         
-        # print('*'*100)
-        # print(prompt)
-        # print('-'*100)
+        print('*'*100)
+        print(prompt)
+        print('-'*100)
 
         images = [Image.open(s).convert('RGB') for s in images]
         args = abstractproperty()
