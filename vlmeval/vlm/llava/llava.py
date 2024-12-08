@@ -57,7 +57,7 @@ class LLaVA(BaseModel):
                 warnings.warn('Unknown error when loading LLaVA model.')
             exit(-1)
 
-        self.model = self.model.cuda()
+        # self.model = self.model.cuda()
 
         # additional model configuration added
         if not hasattr(self.model.config, 'use_contrastive_loss'):
