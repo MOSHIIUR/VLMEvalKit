@@ -262,12 +262,13 @@ class LLaVA_custom(BaseModel):
 
         if 'llama' in self.model_path.lower():
             # add assistant
-            assistant = '<|start_header_id|>' + conv.roles[1] + '<|end_header_id|>' + ':'
+            assistant = '<|start_header_id|>' + conv.roles[1] + '<|end_header_id|>' + ': '
             prompt_question += assistant
 
         elif 'phi' in self.model_path.lower():
             # add assistant
-            prompt_question +='<|assistant|>: '
+            splits = prompt_question.split('<|endoftext|>')
+            prompt_question = splits[0]+'<|assistant|>: '
 
         
         args = abstractproperty()
