@@ -60,8 +60,8 @@ class LLaVA(BaseModel):
         # self.model = self.model.cuda()
 
         # additional model configuration added
-        if not hasattr(self.model.config, 'use_contrastive_loss'):
-            self.model.config.use_contrastive_loss = True
+        if not hasattr(self.model.config, 'moe_enable'):
+            self.model.config.moe_enable = False
 
         # if not hasattr(self.model.config, 'training'):
         self.model.config.training = False
