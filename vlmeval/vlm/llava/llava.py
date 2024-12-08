@@ -221,10 +221,10 @@ class LLaVA_custom(BaseModel):
             )
 
         # additional model configuration added
-        # if not hasattr(self.model.config, 'moe_enable'):
-        #     self.model.config.moe_enable = False
+        if not hasattr(self.model.config, 'moe_enable'):
+            self.model.config.moe_enable = False
 
-        self.model = self.model.cuda()
+        # self.model = self.model.cuda()
 
         if 'phi' in model_path.lower():
             conv_mode = 'phi_3_5'
