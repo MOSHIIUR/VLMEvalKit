@@ -136,9 +136,9 @@ class LLaVA(BaseModel):
         assert message[-1]['role'] == 'user', message
         prompt += 'ASSISTANT: '
         
-        print('*'*100)
-        print(prompt)
-        print('-'*100)
+        # print('*'*100)
+        # print(prompt)
+        # print('-'*100)
 
         images = [Image.open(s).convert('RGB') for s in images]
         args = abstractproperty()
@@ -257,13 +257,17 @@ class LLaVA_custom(BaseModel):
         conv.append_message(conv.roles[0], content)
         conv.append_message(conv.roles[1], None)
         prompt_question = conv.get_prompt()
-        print(prompt_question)
-        print('*'*30)
+        # print(prompt_question)
+        # print('*'*30)
 
         if 'llama' in self.model_path.lower():
             # add assistant
             assistant = '<|start_header_id|>' + conv.roles[1] + '<|end_header_id|>' + ':'
             prompt_question += assistant
+
+        elif 'phi' in self.model_path.lower():
+            # add assistant
+            prompt_question +='<|assistant|>: '
 
         
         args = abstractproperty()
