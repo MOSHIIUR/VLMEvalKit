@@ -268,7 +268,7 @@ class LLaVA_custom(BaseModel):
         elif 'phi' in self.model_path.lower():
             # add assistant
             splits = prompt_question.split('<|endoftext|>')
-            prompt_question = splits[0]+'<|assistant|>: '
+            prompt_question = splits[0]+'<|assistant|>'
 
         
         args = abstractproperty()
