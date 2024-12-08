@@ -206,6 +206,8 @@ class LLaVA_custom(BaseModel):
 
         warnings.warn('Please install the latest version of llava from github before you evaluate the LLaVA model. ')
         
+        self.model_path = model_path
+        
         if model_path == 'Lin-Chen/ShareGPT4V-7B':
             model_name = 'llava-v1.5-7b'
         elif model_path == 'Lin-Chen/ShareGPT4V-13B':
@@ -219,36 +221,13 @@ class LLaVA_custom(BaseModel):
             )
 
         # additional model configuration added
-        if not hasattr(self.model.config, 'moe_enable'):
-            self.model.config.moe_enable = False
-
-
-        # try:
-            
-            
-        # except:
-        #     if 'ShareGPT4V' in model_path:
-        #         import llava
-        #         warnings.warn(
-        #             'Please manually remove the encoder type check in '
-        #             f'{llava.__path__[0]}/model/multimodal_encoder/builder.py '
-        #             'Line 8 to use the ShareGPT4V model. ')
-        #     else:
-        #         warnings.warn('Unknown error when loading LLaVA model.')
-        #     exit(-1)
-
-        # # additional model configuration added
-        # if not hasattr(self.model.config, 'use_contrastive_loss'):
-        #     self.model.config.use_contrastive_loss = True
-
-        # # if not hasattr(self.model.config, 'training'):
-        # self.model.config.training = False
-            
+        # if not hasattr(self.model.config, 'moe_enable'):
+        #     self.model.config.moe_enable = False
 
         self.model = self.model.cuda()
 
         if 'phi' in model_path.lower():
-            conv_mode = 'phi'
+            conv_mode = 'phi_3_5'
 
         elif 'llama' in model_path.lower():
             conv_mode = 'llama_3_1'
@@ -279,16 +258,12 @@ class LLaVA_custom(BaseModel):
         conv.append_message(conv.roles[1], None)
         prompt_question = conv.get_prompt()
 
-        # add assistant
-        assistant = '<|start_header_id|>' + conv.roles[1] + '<|end_header_id|>' + ':'
-        # assistant = '<|start_header_id|>' + conv.roles[1] + '<|end_header_id|>' + ':'
+        if 'llama' in self.model_path.lower():
+            # add assistant
+            assistant = '<|start_header_id|>' + conv.roles[1] + '<|end_header_id|>' + ':'
+            prompt_question += assistant
 
-        prompt_question += assistant
-
-        # pprint.pprint(prompt_question)
-        # print('*'*100)
-
-
+        
         args = abstractproperty()
         args.image_aspect_ratio = 'pad'
         image_tensor = process_images(images, self.image_processor, args).to('cuda', dtype=torch.float16)

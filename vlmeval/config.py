@@ -131,6 +131,7 @@ llava_series = {
     # moe
     'vicuna7b_moe_llava': partial(LLaVA, model_path='./ckpts/finetune-vicuna7b-moe-llava'),
     'llava_llama': partial(LLaVA_custom, model_path='./ckpts/finetune-llama-llava'),
+    'llava_phi3_5': partial(LLaVA_custom, model_path='./ckpts/llava-phi-finetune'),    
     'llava_llama_c04': partial(LLaVA_custom, model_path='./ckpts/llama/finetune/llava-llama-c04'),
     'aimagelab': partial(LLaVA_custom, model_path='aimagelab/LLaVA_MORE-llama_3_1-8B-finetuning'),
 
@@ -342,38 +343,16 @@ supported_VLM = {
     'llava_moe_e8t2': partial(LLaVA, model_path='./ckpts_it/moe/llava-moe-e8t2-finetune'),
     # phi family
     'llava_phi_c01': partial(LLaVA_custom, model_path='./ckpts/phi2/finetune/llava-phi-c01'),
-    'llava_phi_c02': partial(LLaVA_custom, model_path='./ckpts/phi2/finetune/llava-phi-c02'),
-    'llava_phi_c03': partial(LLaVA_custom, model_path='./ckpts/phi2/finetune/llava-phi-c03'),
-    'llava_phi_c04': partial(LLaVA_custom, model_path='./ckpts/phi2/finetune/llava-phi-c04'),
-    'llava_phi_c05': partial(LLaVA_custom, model_path='./ckpts/phi2/finetune/llava-phi-c05'),
-    'llava_phi_c06': partial(LLaVA_custom, model_path='./ckpts/phi2/finetune/llava-phi-c06'),
-    'llava_phi_c09': partial(LLaVA_custom, model_path='./ckpts/phi2/finetune/llava-phi-c09'),
-    'llava_phi_c10': partial(LLaVA_custom, model_path='./ckpts/phi2/finetune/llava-phi-c10'),
     
     # moe
     'vicuna7b_moe_llava': partial(LLaVA, model_path='./ckpts/finetune-vicuna7b-moe-llava'),
     'llava_llama': partial(LLaVA_custom, model_path='./ckpts/finetune-llama-llava'),
+    'llava_phi3_5': partial(LLaVA_custom, model_path='./ckpts/llava-phi-finetune'),    
     'llava_llama_c04': partial(LLaVA_custom, model_path='./ckpts/llama/finetune/llava-llama-c04'),
     'aimagelab': partial(LLaVA_custom, model_path='aimagelab/LLaVA_MORE-llama_3_1-8B-finetuning'),
 
     # synthetic data
     'llava-main_4x-E3': partial(LLaVA, model_path='./ckpts/llava-main_4x-E3'),
-    'llava-main_4x_v2-E3': partial(LLaVA, model_path='./ckpts/llava-main_4x_v2-E3'),
-    'llava-evolved_50k-E3': partial(LLaVA, model_path='./ckpts/llava-evolved_50k-E3'),
-    'llava-mix_evolved-E3': partial(LLaVA, model_path='./ckpts/llava-mix_evolved-E3'),
-
-    'llava-main_4x-E1': partial(LLaVA, model_path='./ckpts/llava-main_4x-E6/checkpoint-640'),
-    'llava-main_4x-E2': partial(LLaVA, model_path='./ckpts/llava-main_4x-E6/checkpoint-1280'),
-    'llava-main_4x_E3': partial(LLaVA, model_path='./ckpts/llava-main_4x-E6/checkpoint-1920'),
-    'llava-main_4x-E4': partial(LLaVA, model_path='./ckpts/llava-main_4x-E6/checkpoint-2560'),
-    'llava-main_4x-E5': partial(LLaVA, model_path='./ckpts/llava-main_4x-E6/checkpoint-3200'),
-    'llava-main_4x-E6': partial(LLaVA, model_path='./ckpts/llava-main_4x-E6'),
-
-    'llava-v1_97k-E3': partial(LLaVA, model_path='./ckpts/llava-v1_97k-E3'),
-    'llava-v2_97k-E3': partial(LLaVA, model_path='./ckpts/llava-v2_97k-E3'),
-    'llava-v3_97k-E3': partial(LLaVA, model_path='./ckpts/llava-v3_97k-E3'),
-    'llava-evolve_17k-E3': partial(LLaVA, model_path='./ckpts/llava-evolve_17k-E3'),
-    'llava-evolve_17k-task-E3': partial(LLaVA, model_path='./ckpts/llava-evolve_17k-task-E3'),
     
     }
 
