@@ -257,6 +257,8 @@ class LLaVA_custom(BaseModel):
         conv.append_message(conv.roles[0], content)
         conv.append_message(conv.roles[1], None)
         prompt_question = conv.get_prompt()
+        print(prompt_question)
+        print('*'*30)
 
         if 'llama' in self.model_path.lower():
             # add assistant
