@@ -146,7 +146,7 @@ llava_series = {
     'llava_phi_c10': partial(LLaVA_custom, model_path='./ckpts/phi2/finetune/llava-phi-c10'),
     
     # synthetic_data
-    'llava-v1_50k-task-E3': partial(LLaVA, model_path='./ckpts/llava-v1_50k-task-E3'),
+    'llava-no_evol-E3': partial(LLaVA, model_path='./ckpts/llava-no_evol-E3'),
     'llava-v1_50k-task-E3': partial(LLaVA, model_path='./ckpts/llava-v2_50k-task-E3'),
     'llava-mix_evolved-E3': partial(LLaVA, model_path='./ckpts/llava-mix_evolved-E3'),
 
@@ -353,7 +353,7 @@ supported_VLM = {
     'aimagelab': partial(LLaVA_custom, model_path='aimagelab/LLaVA_MORE-llama_3_1-8B-finetuning'),
 
     # synthetic data
-    'llava-main_4x-E3': partial(LLaVA, model_path='./ckpts/llava-main_4x-E3'),
+    'llava-no_evol-E3': partial(LLaVA, model_path='./ckpts/llava-no_evol-E3'),
     
     }
 
