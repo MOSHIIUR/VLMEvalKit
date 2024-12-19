@@ -193,14 +193,14 @@ class LLaVA_custom(BaseModel):
         
         print(f"Loading model from: {model_path}")
         
-        try:
-            from llava.model.builder import load_pretrained_model
-            from llava.mm_utils import get_model_name_from_path
-            from llava.conversation import conv_templates
+        # try:
+        from llava.model.builder import load_pretrained_model
+        from llava.mm_utils import get_model_name_from_path
+        from llava.conversation import conv_templates
 
-        except:
-            warnings.warn('Please install conv_templates')
-            sys.exit(-1)
+        # except:
+        #     warnings.warn('Please install conv_templates')
+        #     sys.exit(-1)
             
 
 

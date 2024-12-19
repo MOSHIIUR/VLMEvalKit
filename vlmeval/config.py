@@ -327,7 +327,7 @@ supported_VLM = {
     'vicuna7b_moe_llava': partial(LLaVA, model_path='./ckpts/finetune-vicuna7b-moe-llava'),
     'llava_llama': partial(LLaVA_custom, model_path='./ckpts/finetune-llama-llava'),
     'llava_phi3_5': partial(LLaVA_custom, model_path='./ckpts/llava-phi-finetune'), 
-    'llava-phi-moe-all-MN': partial(LLaVA_custom, model_path='./ckpts/llava-phi-moe-all-MN'),    
+       
     'llava_llama_c04': partial(LLaVA_custom, model_path='./ckpts/llama/finetune/llava-llama-c04'),
     'aimagelab': partial(LLaVA_custom, model_path='aimagelab/LLaVA_MORE-llama_3_1-8B-finetuning'),
 
