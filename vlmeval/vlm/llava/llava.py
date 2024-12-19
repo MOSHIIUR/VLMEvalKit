@@ -279,7 +279,7 @@ class LLaVA_custom(BaseModel):
         with torch.inference_mode():
             output_ids = self.model.generate(
                 input_ids, images=image_tensor, pad_token_id=self.tokenizer.pad_token_id, **self.kwargs)
-            # print(output_ids)
+            print(output_ids)
             # output_ids[output_ids == 0] = self.tokenizer.eos_token_id
             # print('*'*100)
             # print(output_ids)
