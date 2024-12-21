@@ -280,13 +280,13 @@ class LLaVA_custom(BaseModel):
             output_ids = self.model.generate(
                 input_ids, images=image_tensor, pad_token_id=self.tokenizer.pad_token_id, **self.kwargs)
             # print(output_ids)
-            output_ids[output_ids == -200] = 0
+            # output_ids[output_ids == -200] = 0
             # print('*'*100)
             # print(output_ids)
 
 
         output = self.tokenizer.batch_decode(output_ids,  skip_special_tokens=True)[0].strip()
-        print(output)
+        # print(output)
         return output
 
 
