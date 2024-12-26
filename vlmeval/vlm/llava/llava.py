@@ -214,7 +214,7 @@ class LLaVA_custom(BaseModel):
             model_name = 'llava-v1.5-13b'
         else:
             model_name = get_model_name_from_path(model_path)
-            self.tokenizer, model, self.image_processor, self.context_len = load_pretrained_model(
+            self.tokenizer, self.model, self.image_processor, self.context_len = load_pretrained_model(
                 model_path=model_path,
                 model_base=None,
                 model_name=model_name,
@@ -224,16 +224,14 @@ class LLaVA_custom(BaseModel):
         if not hasattr(self.model.config, 'moe_enable'):
             self.model.config.moe_enable = False
 
-        # self.model = self.model.cuda()
+        self.model = self.model.cuda()
 
         if 'phi' in model_path.lower():
             conv_mode = 'phi_3_5'
 
         elif 'llama' in model_path.lower():
             conv_mode = 'llama_3_1'
-                
-        self.model = model.cuda()
-
+            
         self.conv_template = conv_mode
         self.conv_templates = conv_templates
 
@@ -334,7 +332,6 @@ class LLaVA_Next(BaseModel):
 
         model = model.eval()
         self.model = model.cuda()
-
         kwargs_default = dict(do_sample=False, temperature=0, max_new_tokens=512, top_p=None, num_beams=1)
         kwargs_default.update(kwargs)
         self.kwargs = kwargs_default
