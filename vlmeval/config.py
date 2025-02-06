@@ -143,6 +143,7 @@ llava_series = {
     
     # synthetic_data
     'llava-no_evol-E3': partial(LLaVA, model_path='./ckpts/llava-no_evol-E3'),
+    'llava-Elimination_Based_Rationales': partial(LLaVA, model_path='./ckpts/llava-Elimination_Based_Rationales'),
     # ================================================================================================
     'llava_v1_7b': partial(LLaVA, model_path=LLAVA_V1_7B_MODEL_PTH),
     'sharegpt4v_7b': partial(LLaVA, model_path='Lin-Chen/ShareGPT4V-7B'),
@@ -324,6 +325,7 @@ supported_VLM = {
     'llava_moe_e8t2': partial(LLaVA, model_path='./ckpts_it/moe/llava-moe-e8t2-finetune'),
     # phi family
     'llava_phi_c01': partial(LLaVA_custom, model_path='./ckpts/phi2/finetune/llava-phi-c01'),
+    'llava-Elimination_Based_Rationales': partial(LLaVA, model_path='./ckpts/llava-Elimination_Based_Rationales'),
     
     # moe
     'vicuna7b_moe_llava': partial(LLaVA, model_path='./ckpts/finetune-vicuna7b-moe-llava'),
