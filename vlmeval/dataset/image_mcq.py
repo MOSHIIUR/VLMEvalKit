@@ -90,7 +90,10 @@ class ImageMCQDataset(ImageBaseDataset):
         ),
         
         # A-OKVQA
-        'A-OKVQA': 'https://huggingface.co/datasets/Allen8/A-OKVQA/resolve/main/a-okvqa.tsv'
+        'A-OKVQA': 'https://huggingface.co/datasets/Allen8/A-OKVQA/resolve/main/a-okvqa.tsv',
+
+        # Meme-Bench
+        'meme-bench': 'https://huggingface.co/datasets/pltops/humor-bench/resolve/main/humor-bench.tsv',
     }
 
     DATASET_MD5 = {
