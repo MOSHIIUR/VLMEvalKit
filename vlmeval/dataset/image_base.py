@@ -100,6 +100,10 @@ class ImageBaseDataset:
     def dump_image(self, line):
         os.makedirs(self.img_root, exist_ok=True)
 
+        print('---')
+        print(line)
+        print('---')
+
         if 'image' in line:
             if isinstance(line['image'], list):
                 tgt_path = []
