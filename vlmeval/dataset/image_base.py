@@ -53,10 +53,6 @@ class ImageBaseDataset:
             for k in image_map:
                 if len(image_map[k]) <= 64:
                     idx = image_map[k]
-                    print('---')
-                    print(len(image_map[idx]))
-                    print(idx)
-                    print('---')
                     assert idx in image_map and len(image_map[idx]) > 64
                     image_map[k] = image_map[idx]
 
@@ -103,11 +99,6 @@ class ImageBaseDataset:
 
     def dump_image(self, line):
         os.makedirs(self.img_root, exist_ok=True)
-
-        print('---')
-        print(line)
-        print('---')
-
         if 'image' in line:
             if isinstance(line['image'], list):
                 tgt_path = []
