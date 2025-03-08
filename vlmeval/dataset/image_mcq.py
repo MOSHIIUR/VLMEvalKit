@@ -94,6 +94,7 @@ class ImageMCQDataset(ImageBaseDataset):
 
         # Meme-Bench
         'humorbench': 'https://huggingface.co/datasets/pltops/humorbench/resolve/main/humorbench.tsv',
+        'humorbench_v2': 'https://huggingface.co/datasets/pltops/humorbench_v2/resolve/main/humorbench.tsv',
     }
 
     DATASET_MD5 = {
