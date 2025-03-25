@@ -127,6 +127,9 @@ llava_series = {
     'llava_moe_e4t2': partial(LLaVA, model_path='./ckpts_it/moe_full/llava-moe-e4t2-finetune'),
     'llava_moe_e5t3': partial(LLaVA, model_path='./ckpts_it/moe_full/llava-moe-e5t3-finetune'),
     'llava_moe_e8t2': partial(LLaVA, model_path='./ckpts_it/moe/llava-moe-e8t2-finetune'),
+    
+    # modality gap
+    'llava_modality_gap': partial(LLaVA, model_path='./ckpts/llava-llama-finetune-v3'),
 
     # moe
     'vicuna7b_moe_llava': partial(LLaVA, model_path='./ckpts/finetune-vicuna7b-moe-llava'),
@@ -336,8 +339,15 @@ supported_VLM = {
     'llava_llama_c04': partial(LLaVA_custom, model_path='./ckpts/llama/finetune/llava-llama-c04'),
     'aimagelab': partial(LLaVA_custom, model_path='aimagelab/LLaVA_MORE-llama_3_1-8B-finetuning'),
 
+    # modality gap
+    'llava_modality_gap': partial(LLaVA, model_path='./ckpts/llava-llama-finetune-v3'),
+
+
     # synthetic data
     'llava-no_evol-E3': partial(LLaVA, model_path='./ckpts/llava-no_evol-E3'),
+
+    'Phi-3.5-Vision': partial(Phi3_5Vision, model_path='microsoft/Phi-3.5-vision-instruct')
+
     
     }
 
